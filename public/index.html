@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="./highlight/atom-one-dark.css" />
+        <link rel="stylesheet" href="./reveal/reveal.css" />
+        <link rel="stylesheet" href="./reveal/black.css" />
+        <style>
+            ul, ol{
+                font-size: 28px;
+            }
+
+            p{
+                font-size: 32px;
+            }
+
+            .sections{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                font-size: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!-- INTRO -->
+                <section>
+                    <h1>Promisies</h1>
+                    <img src="./imgs/intro.jpg" >
+                </section>
+                <!-- SENARIO -->
+                <section>
+                    <h2>Scenario</h2>
+                    <ul>
+                        <li class="fragment">You and your partner want cereal and pancakes for breakfast.</li>
+                        <li class="fragment">You have no cereal, so you ask your partner if she/he can get some.</li>
+                        <li class="fragment">
+                            You tell her/him that you'll be preparing the pancakes while they get
+                            the cereal, and ask her/him to <b><i>promise</i></b> you the following:
+                            <ul>
+                                <li class="fragment">
+                                    Call me when you get the cereal so I can prepare the milk and
+                                    bowl.
+                                </li class="fragment">
+                                <li class="fragment">
+                                    Call me if something went wrong, so I don't prepare the milk and bowl.
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            Your partner says, I <b><i>promise</i></b> to call you.
+                        </li>
+                        <li class="fragment">
+                            Now, you're preparing the pancakes but meanwhile the cereal is <b><i>pending</i></b>.
+                        </li>
+                        <li class="fragment">
+                            You get a call from your partner and now she/him say the following:
+                            <ul>
+                                <li class="fragment">
+                                    Scenario one: "Hey babe, I've got the cereal". Your desire for cereal has been <b><i>fulfilled</i></b>.
+                                </li>
+                                <li class="fragment">
+                                    Scenario Two: "Hey babe, the store's closed". Your desire for cereal has been <b><i>rejected</i></b>.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <!-- STATES -->
+                <section>
+                    <h2>States</h2>
+                    <p class="fragment">A promise will always be in one of these states</p>
+                    <ul>
+                        <li class="fragment">
+                            <b><i>Pending </i></b>- Inital state of a promise.
+                        </li>
+                        <li class="fragment">
+                            <b><i>Fulfilled</i></b> - The operation was succesful.
+                        </li>
+                        <li class="fragment">
+                            <b><i>Rejected</i></b> - The operation was failed.
+                        </li>
+                    </ul>
+                </section>
+                <!-- STATES IN JS -->
+                <section>
+                    <h2>States in Javascript</h2>
+                    <p class="fragment" data-fragment-index="1">How does our scenario apply to Javascript?</p>
+                    <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+                        <div style="display: flex; flex-direction: column; width: 50%;">
+                            <h5 class="fragment" data-fragment-index="2">Scenario</h5>
+                            <ol>
+                                <li class="fragment" data-fragment-index="3">
+                                    Get the cereal.
+                                </li>
+                                <li class="fragment" data-fragment-index="4">
+                                    Store has cereal
+                                </li>
+                                <li class="fragment" data-fragment-index="5">
+                                    Store doesn't have cereal
+                                </li>
+                            </ol>
+                        </div>
+                        <div style="display: flex; flex-direction: column;  width: 50%;">
+                            <h5 class="fragment" data-fragment-index="2">Javascript</h5>
+                            <ol>
+                                <li class="fragment" data-fragment-index="3">
+                                    Promise
+                                </li>
+                                <li class="fragment" data-fragment-index="4">
+                                    Fulfilled promise
+                                </li>
+                                <li class="fragment" data-fragment-index="5">
+                                    Rejected promise
+                                </li>
+                            </ol>
+                        </div>
+                        
+                    </div>
+                </section>
+                <!-- CREATING PROMISES -->
+                <section>
+                    <h2>Let's get to the code!</h2>
+                    <section>
+                        <div>
+                            <p class="fragment" data-fragment-index="1">Creating a promise</p>
+                            <pre class="fragment" data-fragment-index="1"><code>const myPromise = new Promise((resolve, reject) => {...});</code></pre>
+                            <ul>
+                                <li class="fragment">
+                                    Resolve - Is the function called when the promise has been <b><i>fulfilled</i></b>.
+                                </li>
+                                <li class="fragment">
+                                    Reject - Is the function called when the promise has been <b><i>rejected</i></b>.
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <div>
+                            <p>Resolving a promise</p>
+                            <pre><code>const myPromise = new Promise((resolve, reject) => {
+  ...
+  resolve()
+});</code></pre>
+                            <ul>
+                                <li class="fragment">
+                                    Since <b><i>resolve</i></b> is a function we can pass any value as its argument.
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <div>
+                            <p>Rejecting a promise</p>
+                            <pre><code>const myPromise = new Promise((resolve, reject) => {
+  ...
+  reject()
+});</code></pre>
+                            <ul>
+                                <li class="fragment">
+                                    Since <b><i>reject</i></b> is a function we can pass any value as its argument.
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <span class="sections">examples/1.js</span>
+                </section>
+                <!-- USING PROMISES -->
+                <section>
+                    <h2>Using Promises</h2>
+
+                    <section>
+                        <p class="fragment" data-fragment-index="1">Lets create our promise</p>
+                        <pre class="fragment" data-fragment-index="1"><code>const usingPromises = new Promise((resolve, reject) => {
+  if (true) {
+    resolve('i am success')
+  } else {
+    reject('i am error')
+  }
+})</code></pre>
+                    </section>
+                    <section>
+                        <p>Let's use it!</p>
+                        <pre><code>usingPromises
+  .then(message => {
+    console.log(message)
+  })
+  .catch(message => {
+    console.log(message)
+})</code></pre>
+                    <ul>
+                        <li class="fragment" >
+                            <b><i>Then</i></b> is used when promise has been <b><i>fulfilled</i></b>.
+                        </li>
+                        <li class="fragment" >
+                            <b><i>Catch</i></b> is used when promise has been <b><i>rejected</i></b>.
+                        </li>
+                    </ul>
+                    </section>
+                    
+                    <span class="sections">examples/2.js</span>
+                </section>
+                <!-- REPLICATING SCENARIO -->
+                <section>
+                    <h2>With Scenario</h2>
+
+                    <section>
+                        <p class="fragment">We're going all out with the example.</p>
+                        <ol>
+                            <li class="fragment">
+                                Create a function that checks if the the desired cereal exists on the store.
+                            </li>
+                            <li class="fragment">
+                                Create a function that checks if the there's any cereal on the store.
+                            </li>
+                            <li class="fragment">
+                                Create a promise that takes in a desired cereal as an argument. 
+                            </li>
+
+                        </ol>
+                    </section>
+                    <section>
+                        <p>First lets create a function to check if the store has the desired cereal.</p>
+                        <pre><code data-line-numbers="1|2-10|12-18|21-22|23-26">function _hasDesiredCereal(desiredCereal) {
+  // dummy data
+  const availableCereals = [
+    'apple jacks',
+    'captain crunch',
+    'chocapic',
+    'estrelitas',
+    'oreos',
+    'lion',
+    'frosted flakes'
+  ]
+
+  // Check if store has desired cereal
+  if (availableCereals.includes(desiredCereal)) {
+    return {
+      isDisered: true,
+      type: desiredCereal
+    }
+  }
+     
+  // since the store doesnt have desired cereal, return a random one from the store
+  const randomCereal = availableCereals[Math.floor(Math.random() * availableCereals.length)]
+
+  return {
+    isDisered: false,
+    type: randomCereal
+  }
+}</code></pre>
+                    </section>
+                    <section>
+                        <p>Next lets create a function to check if the store has cereal.</p>
+                        <pre><code data-line-numbers="1|2-7|9-11">function _hasCereal(desiredCereal) {
+  if (Math.random() >= 0.5) {
+    return {
+        has: true,
+        ..._hasDesiredCereal(desiredCereal)
+    } 
+  }
+
+  return {
+    has: false
+  }
+}</code></pre>
+                    </section>
+                    <section>
+                        <p>Finally lets create the promise, and combine everything together.</p>
+                        <pre><code data-line-numbers="1|3|5|6-12|14-20|22-26">function getCereal(desiredCereal) {
+
+  const cereal = _hasCereal(desiredCereal)
+                          
+  return new Promise((resolve, reject) => {
+    // Store has cereal and is desired one
+    if (cereal.has && cereal.isDisered) {
+      return resolve({
+        message: "Hey babe, i got the cereal and it's the one you want",
+        ...cereal
+      })
+    }
+  
+    // Store has cereal and but its not the desired one
+    if (cereal.has && !cereal.isDisered) {
+      return resolve({
+        message: `Hey babe, i got the cereal but it't not the one you wanted, i got ${cereal.type} instead`,
+        ...cereal
+      })
+    }
+  
+    // Store has not cereal
+    reject({
+      message: "Hey babe, they're all out of cereal, maybe we can cook up some scrambled eggs",
+      ...cereal
+    })
+  })
+}</code></pre>
+                    </section>
+                    <section>
+                        <p>Using our promise</p>
+                        <pre><code data-line-numbers="1|2-5|5-9">getCereal()
+  .then(res => {
+    //Prepare the bowl and milk
+    console.log(res)
+  })
+  .catch(err => {
+    // Make some scrambled eggs
+    console.log(err)
+  })</code></pre>
+                    </section>
+                    <span class="sections">examples/3.js</span>
+                </section>
+                <!-- FINALLY -->
+                <section>
+                    <h2>Finally</h2>
+                    <p><b><i>Finally</i></b> will be executed regardless if promise was <br><b><i>fulfilled</i></b> or <b><i>rejected</i></b>.</p>
+                    <pre><code data-line-numbers="1|2-4|5-7|8-10">getCereal()
+.then(res => {
+  console.log(res)
+})
+.catch(err => {
+  console.log(err)
+})
+.finally(res => {
+  console.log(res)
+})</code></pre>
+                </section>
+                <!-- ASYNC AWAIT -->
+                <section>
+                    <h2>Async/await</h2>
+                    <section>
+                        <p class="fragment">Let's make promises easier.</p>
+                        <pre class="fragment"><code>async function init() {
+  const cereal = await getCereal()
+}
+                          
+init()</code></pre>
+                        <ul>
+                            <li class="fragment">The <b><i>async/await</i></b> syntax will enable promise behavior.</li>
+                            <li class="fragment">
+                                We add the <b><i>async</i></b> keyword before our function.
+                            </li>
+                            <li class="fragment">
+                                Then we can use the <b><i>await</i></b> keyword whenever we want to call a promise. Note that all the code below the <b><i>await</i></b> line will wait until the promise is finished.
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <p>What about error handling?!</p>
+                        <pre class="fragment" ><code>async function initError() {
+try {
+  const cereal = await getCereal();
+                          
+  console.log(cereal)
+                          
+} catch (error) {
+   console.log(error)
+  }
+}
+                          
+initError()
+                        </code></pre>
+                        <ul>
+                            <li class="fragment">Just wrap it in a try catch block and it will work excactly like <b><i>catch</i></b>.</li>
+                        </ul>
+                    </section>
+                    <span class="sections">examples/4.js</span>
+                </section>
+                <!-- NESTED -->
+                <section>
+                    <h2>Nested promises</h2>
+                    <section>
+                        <p class="fragment">Lets say we have multiple promises and we want to execute one after the other one is done.</p>
+                        <p class="fragment">First lets create our promises.</p>
+                        <pre class="fragment"><code>function myPromise() {
+  return new Promise((resolve, reject) => {
+    resolve('First')
+  })
+}
+  
+function myPromiseTwo() {
+  return new Promise((resolve, reject) => {
+    resolve('Second')
+  })
+}
+  
+function myPromiseThree() {
+  return new Promise((resolve, reject) => {
+    reject('I blew up')
+  })
+}
+                        </code></pre>
+                        <ul>
+                            <li class="fragment">The <b><i>async/await</i></b> syntax will enable promise behavior.</li>
+                            <li class="fragment">
+                                We add the <b><i>async</i></b> keyword before our function.
+                            </li>
+                            <li class="fragment">
+                                Then we can use the <b><i>await</i></b> keyword whenever we want to call a promise. Note that all the code below the <b><i>await</i></b> line will wait until the promise is finished.
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <p>Then/catch way</p>
+                        <pre class="fragment"><code data-line-numbers="1|2-5|6-9|10">myPromise()
+.then((res) => {
+  console.log(res)
+  return myPromiseTwo()
+})
+.then((res) => {
+  console.log(res)
+  return myPromiseThree()
+})
+.catch(err => console.log(err))
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>async/await way</p>
+                        <pre class="fragment"><code data-line-numbers="1|2|3-4|6-7|9|10-12|15">async function nested() {
+  try {
+    const first = await myPromise();
+    console.log(first)
+
+    const second = await myPromiseTwo();
+    console.log(second)
+
+    await myPromiseThree();
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+nested()
+                        </code></pre>
+                    </section>
+                </section>
+                <!-- RACE, ALL & ALLSETTLED -->
+                <section>
+                    <h2>race, all & allSettled</h2>
+                    <div  class="fragment">
+                        <pre><code>Promise.race([])</code></pre>
+                        <ul>
+                            <li>Takes in an array of promises, and waits for the first one to be <b><i>fulfilled</i></b>.</li>
+                        </ul>
+
+                    </div>
+                    <div  class="fragment">
+                        <pre><code>Promise.all([])</code></pre>
+                        <ul>
+                            <li>Takes in an array of promises, and waits for all of them to be <b><i>fulfilled</i></b>. This will exit early if one of the promises is <b><i>fulfilled</i></b>.</li>
+                        </ul>
+
+                    </div>
+                    <div  class="fragment">
+
+                        <pre><code>Promise.allSettled([])</code></pre>
+                        <ul>
+                            <li>Takes in an array of promises, and waits for all of them to be <b><i>fulfilled</i></b>. Regardless if a promise was <b><i>rejected</i></b> or <b><i>fulfilled</i></b></li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- CREDTIS -->
+                <section>
+                    <h2>Credits</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=YiYtwbnPfkY">Codevolution</a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw">Web Dev Simplified</a>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/">MDN</a>
+                        </li>
+                        <li>
+                            <a href="https://fireship.io/">Fireship.io</a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <!-- <script src="./examples/1.js"></script> -->
+        <!-- <script src="./examples/2.js"></script> -->
+        <script src="./examples/3.js"></script>
+        <script src="./examples/4.js"></script>
+        <script src="./examples/5.js"></script>
+        <script src="./highlight/highlight.js"></script>
+        <script src="./reveal/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                center: false,
+                plugins: [RevealHighlight],
+            })
+        </script>
+    </body>
+</html>
